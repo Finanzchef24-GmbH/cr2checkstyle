@@ -87,7 +87,7 @@ function makeErrorElement(message) {
         return items.concat(`${name}="${escape(message[name] + '')}"`);
     }, []);
 
-    return `      <error ${attributes.join(' ')}/>`;
+    return `    <error ${attributes.join(' ')}/>`;
 }
 
 /**
@@ -98,17 +98,17 @@ function makeErrorElement(message) {
  */
 module.exports = function (stdin, stdout, thresholds) {
     stdout.write(`<?xml version="1.0" encoding="UTF-8" ?>${EOL}`);
-    stdout.write(`  <checkstyle>${EOL}`);
-    stdin.on('end', () => stdout.write(`${EOL}  </checkstyle>${EOL}</xml>`));
+    stdout.write(`<checkstyle>${EOL}`);
+    stdin.on('end', () => stdout.write(`${EOL}</checkstyle>`));
 
     stdin
         .pipe(JSONStream.parse(['reports', true]))
         .pipe(es.mapSync(report => getMessages(report, thresholds)))
         .pipe(es.mapSync(function (result) {
             return [
-                `    <file name="${escape(result.file)}">`,
+                `  <file name="${escape(result.file)}">`,
                 result.messages.map(makeErrorElement).join(EOL),
-                `    </file>`
+                `  </file>`
             ].join(EOL);
         }))
         .pipe(es.join(EOL))
