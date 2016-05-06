@@ -1,0 +1,26 @@
+{
+  "name": "cr2checkstyle",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "cr2checkstyle": "./index.js"
+  },
+  "engines": {
+    "node": "4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Raphael Pigulla",
+    "email": "raphael.pigulla@finanzchef24.de"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "1.1.1",
+    "event-stream": "3.3.2",
+    "xml-escape": "1.1.0",
+    "yargs": "4.7.0"
+  }
+}
