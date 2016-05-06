@@ -1,7 +1,7 @@
 {
   "name": "cr2checkstyle",
   "version": "0.0.1",
-  "description": "",
+  "description": "Convert complexity-report data to Checkstyle XML",
   "main": "index.js",
   "bin": {
     "cr2checkstyle": "./index.js"
