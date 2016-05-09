@@ -62,11 +62,14 @@ function parse(argv, name) {
 module.exports = yargs
     .help('help').describe('help', 'Display basic usage information')
     .env('CR2CS')
+    .wrap(yargs.terminalWidth())
     .detectLocale(false)
     .version()
     .options(OPTIONS)
     .pkgConf('cr2checkstyle', process.cwd())
     .config('config', path => JSON.parse(fs.readFileSync(path)))
+    .group(['module-maintainability', 'module-halstead-difficulty', 'module-cyclomatic-complexity'], 'Per-module metrics')
+    .group(['function-halstead-difficulty', 'function-cyclomatic-complexity'], 'Per-function metrics')
     .check(function (argv, options) {
         parse(argv, 'module-maintainability');
         parse(argv, 'module-cyclomatic-complexity');

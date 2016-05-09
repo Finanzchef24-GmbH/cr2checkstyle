@@ -24,7 +24,7 @@ $ cr --format json . | cr2checkstyle > report.xml
 ```
 
 ## Configuration
-By default, cr2checkstyle has no thresholds set so it will not generate any warnings or errors. Currently supported metrics are [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity), [halstead difficulty](https://en.wikipedia.org/wiki/Halstead_complexity_measures) (both per-function) and the maintainability index (per module).
+By default, cr2checkstyle has no thresholds set so it will not generate any warnings or errors. Currently supported metrics are [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity), [halstead difficulty](https://en.wikipedia.org/wiki/Halstead_complexity_measures) and the maintainability index.
 
 Thresholds are given as a low and high watermark. Values above the high watermark will cause errors, values between the low and high watermark will cause warnings (likewise for higher-is-better metrics such as the maintainability index):
 
@@ -38,4 +38,4 @@ $ cr2checkstyle --module-maintainability 80,90
 $ cr2checkstyle --function-cyclomatic-complexity 2,4
 ```
 
-Internally, parameters are parsed with [yargs](http://yargs.js.org/docs/#methods-envprefix) so you can also use environment variables (e.g., `CR2CS_HALSTEAD_DIFFICULTY=3,5`) and the `cr2checkstyle`-property in your `package.json`.
+Internally, parameters are parsed with [yargs](http://yargs.js.org/docs/#methods-envprefix) so you can also use environment variables (e.g., `CR2CS_FUNCTION_HALSTEAD_DIFFICULTY=3,6`) and the `cr2checkstyle`-property in your `package.json`.

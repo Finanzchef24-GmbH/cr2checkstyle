@@ -10,9 +10,10 @@
     "node": "4"
   },
   "scripts": {
-    "test": "npm run lint && npm run mocha",
+    "test": "npm run lint && npm run mocha && npm run test-end2end",
     "lint": "eslint .",
-    "mocha": "mocha test/\\*\\*/\\*.spec.js"
+    "mocha": "mocha test/\\*\\*/\\*.spec.js",
+    "test-end2end": "node index.js --module-maintainability 80,100 --module-halstead-difficulty 2,4 --module-cyclomatic-complexity 2,4 --function-halstead-difficulty 5,10 --function-cyclomatic-complexity 4,8 < test/integration/report.json | sdiff --text test/integration/output.xml -"
   },
   "author": {
     "name": "Raphael Pigulla",
