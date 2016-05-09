@@ -1,6 +1,6 @@
 {
   "name": "cr2checkstyle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert complexity-report data to Checkstyle XML",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,9 @@
     "node": "4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && npm run mocha",
+    "lint": "eslint .",
+    "mocha": "mocha test/\\*\\*/\\*.spec.js"
   },
   "author": {
     "name": "Raphael Pigulla",
@@ -22,5 +24,14 @@
     "event-stream": "3.3.2",
     "xml-escape": "1.1.0",
     "yargs": "4.7.0"
+  },
+  "devDependencies": {
+    "bluebird": "3.3.5",
+    "chai": "3.5.0",
+    "complexity-report": "2.0.0-alpha",
+    "eslint": "2.9.0",
+    "libxmljs": "0.17.1",
+    "mocha": "2.4.5",
+    "stream-buffers": "3.0.0"
   }
 }

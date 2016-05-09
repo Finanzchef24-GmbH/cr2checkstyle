@@ -1,0 +1,803 @@
+{
+    "reports": [
+        {
+            "aggregate": {
+                "sloc": {
+                    "logical": 58,
+                    "physical": 116
+                },
+                "cyclomatic": 10,
+                "halstead": {
+                    "operators": {
+                        "distinct": 16,
+                        "total": 166,
+                        "identifiers": [
+                            "const",
+                            "=",
+                            "()",
+                            ".",
+                            "{}",
+                            ":",
+                            "function",
+                            "if",
+                            "! (prefix)",
+                            "return",
+                            "else",
+                            ":?",
+                            "<=",
+                            ">=",
+                            "[]",
+                            "!=="
+                        ]
+                    },
+                    "operands": {
+                        "distinct": 70,
+                        "total": 193,
+                        "identifiers": [
+                            "\"use strict\"",
+                            "os",
+                            "\"os\"",
+                            "require",
+                            "JSONStream",
+                            "\"JSONStream\"",
+                            "es",
+                            "\"event-stream\"",
+                            "escape",
+                            "\"xml-escape\"",
+                            "EOL",
+                            "LEVEL",
+                            "<anonymous>",
+                            "OK",
+                            "\"ok\"",
+                            "WARN",
+                            "\"warning\"",
+                            "ERROR",
+                            "\"error\"",
+                            "getLevelFor",
+                            "value",
+                            "thresholds",
+                            "reversed",
+                            0,
+                            1,
+                            "getMessages",
+                            "report",
+                            "messages",
+                            "level",
+                            "maintainability",
+                            true,
+                            "line",
+                            "severity",
+                            "message",
+                            "push",
+                            "fnReport",
+                            "levels",
+                            "cyclomatic",
+                            "halsteadDifficulty",
+                            "halstead",
+                            "difficulty",
+                            "source",
+                            "name",
+                            "functions",
+                            "forEach",
+                            "length",
+                            "file",
+                            "path",
+                            "undefined",
+                            "makeErrorElement",
+                            "attributes",
+                            "items",
+                            "concat",
+                            "Object",
+                            "keys",
+                            "reduce",
+                            "module",
+                            "exports",
+                            "stdin",
+                            "stdout",
+                            "write",
+                            "\"end\"",
+                            "on",
+                            "join",
+                            "result",
+                            "map",
+                            "mapSync",
+                            "\"reports\"",
+                            "parse",
+                            "pipe"
+                        ]
+                    },
+                    "length": 359,
+                    "vocabulary": 86,
+                    "difficulty": 22.057142857142857,
+                    "volume": 2307.029046938053,
+                    "effort": 50886.469263890765,
+                    "bugs": 0.7690096823126843,
+                    "time": 2827.0260702161536
+                },
+                "params": 13,
+                "line": 1,
+                "cyclomaticDensity": 17.24137931034483
+            },
+            "functions": [
+                {
+                    "name": "getLevelFor",
+                    "sloc": {
+                        "logical": 9,
+                        "physical": 13
+                    },
+                    "cyclomatic": 6,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 8,
+                            "total": 24,
+                            "identifiers": [
+                                "if",
+                                "! (prefix)",
+                                "return",
+                                ".",
+                                "else",
+                                ":?",
+                                "<=",
+                                ">="
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 9,
+                            "total": 26,
+                            "identifiers": [
+                                "value",
+                                "thresholds",
+                                "reversed",
+                                "LEVEL",
+                                "OK",
+                                0,
+                                1,
+                                "ERROR",
+                                "WARN"
+                            ]
+                        },
+                        "length": 50,
+                        "vocabulary": 17,
+                        "difficulty": 11.555555555555555,
+                        "volume": 204.373142062517,
+                        "effort": 2361.645197166863,
+                        "bugs": 0.06812438068750566,
+                        "time": 131.2025109537146
+                    },
+                    "params": 3,
+                    "line": 24,
+                    "cyclomaticDensity": 66.66666666666666
+                },
+                {
+                    "name": "getMessages",
+                    "sloc": {
+                        "logical": 11,
+                        "physical": 38
+                    },
+                    "cyclomatic": 3,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 12,
+                            "total": 28,
+                            "identifiers": [
+                                "const",
+                                "=",
+                                "[]",
+                                "()",
+                                ".",
+                                "if",
+                                "!==",
+                                "{}",
+                                ":",
+                                "function",
+                                "return",
+                                ":?"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 21,
+                            "total": 35,
+                            "identifiers": [
+                                "report",
+                                "thresholds",
+                                "messages",
+                                "<anonymous>",
+                                "level",
+                                "maintainability",
+                                true,
+                                "getLevelFor",
+                                "LEVEL",
+                                "OK",
+                                "line",
+                                0,
+                                "severity",
+                                "message",
+                                "push",
+                                "functions",
+                                "forEach",
+                                "length",
+                                "file",
+                                "path",
+                                "undefined"
+                            ]
+                        },
+                        "length": 63,
+                        "vocabulary": 33,
+                        "difficulty": 10,
+                        "volume": 317.79682951958256,
+                        "effort": 3177.9682951958257,
+                        "bugs": 0.10593227650652752,
+                        "time": 176.55379417754588
+                    },
+                    "params": 2,
+                    "line": 43,
+                    "cyclomaticDensity": 27.27272727272727
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 15,
+                        "physical": 23
+                    },
+                    "cyclomatic": 3,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 8,
+                            "total": 40,
+                            "identifiers": [
+                                "const",
+                                "=",
+                                "{}",
+                                ":",
+                                "()",
+                                ".",
+                                "if",
+                                "!=="
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 18,
+                            "total": 50,
+                            "identifiers": [
+                                "fnReport",
+                                "levels",
+                                "<anonymous>",
+                                "cyclomatic",
+                                "thresholds",
+                                "getLevelFor",
+                                "halsteadDifficulty",
+                                "halstead",
+                                "difficulty",
+                                "LEVEL",
+                                "OK",
+                                "source",
+                                "name",
+                                "line",
+                                "severity",
+                                "message",
+                                "messages",
+                                "push"
+                            ]
+                        },
+                        "length": 90,
+                        "vocabulary": 26,
+                        "difficulty": 11.11111111111111,
+                        "volume": 423.03957463269836,
+                        "effort": 4700.439718141093,
+                        "bugs": 0.14101319154423278,
+                        "time": 261.1355398967274
+                    },
+                    "params": 1,
+                    "line": 55,
+                    "cyclomaticDensity": 20
+                },
+                {
+                    "name": "makeErrorElement",
+                    "sloc": {
+                        "logical": 2,
+                        "physical": 7
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 7,
+                            "total": 9,
+                            "identifiers": [
+                                "const",
+                                "=",
+                                "()",
+                                "function",
+                                "[]",
+                                ".",
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 6,
+                            "total": 8,
+                            "identifiers": [
+                                "message",
+                                "attributes",
+                                "<anonymous>",
+                                "Object",
+                                "keys",
+                                "reduce"
+                            ]
+                        },
+                        "length": 17,
+                        "vocabulary": 13,
+                        "difficulty": 4.666666666666666,
+                        "volume": 62.907475208398566,
+                        "effort": 293.5682176391933,
+                        "bugs": 0.02096915840279952,
+                        "time": 16.309345424399627
+                    },
+                    "params": 1,
+                    "line": 86,
+                    "cyclomaticDensity": 50
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 1,
+                        "physical": 3
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 3,
+                            "total": 3,
+                            "identifiers": [
+                                "return",
+                                "()",
+                                "."
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 3,
+                            "total": 4,
+                            "identifiers": [
+                                "items",
+                                "name",
+                                "concat"
+                            ]
+                        },
+                        "length": 7,
+                        "vocabulary": 6,
+                        "difficulty": 2,
+                        "volume": 18.094737505048094,
+                        "effort": 36.18947501009619,
+                        "bugs": 0.006031579168349364,
+                        "time": 2.0105263894497885
+                    },
+                    "params": 2,
+                    "line": 87,
+                    "cyclomaticDensity": 100
+                },
+                {
+                    "name": "module.exports",
+                    "sloc": {
+                        "logical": 4,
+                        "physical": 18
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 4,
+                            "total": 26,
+                            "identifiers": [
+                                "()",
+                                ".",
+                                "function",
+                                "[]"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 16,
+                            "total": 30,
+                            "identifiers": [
+                                "stdin",
+                                "stdout",
+                                "thresholds",
+                                "write",
+                                "\"end\"",
+                                "on",
+                                "EOL",
+                                "es",
+                                "join",
+                                "<anonymous>",
+                                "mapSync",
+                                "\"reports\"",
+                                true,
+                                "JSONStream",
+                                "parse",
+                                "pipe"
+                            ]
+                        },
+                        "length": 56,
+                        "vocabulary": 20,
+                        "difficulty": 3.75,
+                        "volume": 242.0279733136923,
+                        "effort": 907.6048999263462,
+                        "bugs": 0.08067599110456411,
+                        "time": 50.422494440352565
+                    },
+                    "params": 3,
+                    "line": 99,
+                    "cyclomaticDensity": 25
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 2,
+                        "physical": 7
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 4,
+                            "total": 9,
+                            "identifiers": [
+                                "return",
+                                "()",
+                                ".",
+                                "[]"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 7,
+                            "total": 10,
+                            "identifiers": [
+                                "result",
+                                "EOL",
+                                "<anonymous>",
+                                "makeErrorElement",
+                                "messages",
+                                "map",
+                                "join"
+                            ]
+                        },
+                        "length": 19,
+                        "vocabulary": 11,
+                        "difficulty": 2.857142857142857,
+                        "volume": 65.72920075410866,
+                        "effort": 187.79771644031047,
+                        "bugs": 0.021909733584702887,
+                        "time": 10.433206468906137
+                    },
+                    "params": 1,
+                    "line": 107,
+                    "cyclomaticDensity": 50
+                }
+            ],
+            "dependencies": [
+                {
+                    "line": 3,
+                    "path": "os",
+                    "type": "CommonJS"
+                },
+                {
+                    "line": 5,
+                    "path": "JSONStream",
+                    "type": "CommonJS"
+                },
+                {
+                    "line": 6,
+                    "path": "event-stream",
+                    "type": "CommonJS"
+                },
+                {
+                    "line": 7,
+                    "path": "xml-escape",
+                    "type": "CommonJS"
+                }
+            ],
+            "maintainability": 115.65861559222697,
+            "loc": 6.285714285714286,
+            "cyclomatic": 2.2857142857142856,
+            "effort": 1666.459074217104,
+            "params": 1.8571428571428572,
+            "path": "/Users/pigulla/workspaces/cr2checkstyle/src/cr2checkstyle.js"
+        },
+        {
+            "aggregate": {
+                "sloc": {
+                    "logical": 1,
+                    "physical": 1
+                },
+                "cyclomatic": 1,
+                "halstead": {
+                    "operators": {
+                        "distinct": 1,
+                        "total": 1,
+                        "identifiers": [
+                            "."
+                        ]
+                    },
+                    "operands": {
+                        "distinct": 2,
+                        "total": 2,
+                        "identifiers": [
+                            "cr2cs",
+                            "Message"
+                        ]
+                    },
+                    "length": 3,
+                    "vocabulary": 3,
+                    "difficulty": 0.5,
+                    "volume": 4.754887502163469,
+                    "effort": 2.3774437510817346,
+                    "bugs": 0.0015849625007211565,
+                    "time": 0.1320802083934297
+                },
+                "params": 0,
+                "line": 9,
+                "cyclomaticDensity": 100
+            },
+            "functions": [],
+            "dependencies": [],
+            "maintainability": 168.03819157143167,
+            "loc": 1,
+            "cyclomatic": 1,
+            "effort": 2.3774437510817346,
+            "params": 0,
+            "path": "/Users/pigulla/workspaces/cr2checkstyle/src/typedefs.js"
+        },
+        {
+            "aggregate": {
+                "sloc": {
+                    "logical": 36,
+                    "physical": 62
+                },
+                "cyclomatic": 4,
+                "halstead": {
+                    "operators": {
+                        "distinct": 16,
+                        "total": 81,
+                        "identifiers": [
+                            "const",
+                            "=",
+                            "()",
+                            "{}",
+                            ":",
+                            "function",
+                            ".",
+                            "if",
+                            "else",
+                            "===",
+                            "typeof (prefix)",
+                            "! (prefix)",
+                            "throw",
+                            "new",
+                            "!==",
+                            "return"
+                        ]
+                    },
+                    "operands": {
+                        "distinct": 50,
+                        "total": 100,
+                        "identifiers": [
+                            "\"use strict\"",
+                            "fs",
+                            "\"fs\"",
+                            "require",
+                            "yargs",
+                            "\"yargs\"",
+                            "OPTIONS",
+                            "<anonymous>",
+                            "\"maintainability\"",
+                            "type",
+                            "\"string\"",
+                            "requiresArg",
+                            true,
+                            "describe",
+                            "\"Thresholds for the per-module maintainability index\"",
+                            "default",
+                            null,
+                            "defaultDescription",
+                            "\"disabled\"",
+                            "\"cyclomatic\"",
+                            "\"Thresholds for the per-function cyclomatic complexity\"",
+                            "\"halsteadDifficulty\"",
+                            "\"Thresholds for the per-function Halstead difficulty\"",
+                            "parse",
+                            "argv",
+                            "name",
+                            "value",
+                            {},
+                            "test",
+                            "Error",
+                            "JSON",
+                            "module",
+                            "exports",
+                            "options",
+                            "\"config\"",
+                            "\"cr2checkstyle\"",
+                            "process",
+                            "cwd",
+                            false,
+                            "\"CR2CS\"",
+                            "\"help\"",
+                            "\"Display basic usage information\"",
+                            "help",
+                            "env",
+                            "detectLocale",
+                            "version",
+                            "pkgConf",
+                            "config",
+                            "check",
+                            "strict"
+                        ]
+                    },
+                    "length": 181,
+                    "vocabulary": 66,
+                    "difficulty": 16,
+                    "volume": 1094.03533560388,
+                    "effort": 17504.56536966208,
+                    "bugs": 0.36467844520129333,
+                    "time": 972.4758538701155
+                },
+                "params": 4,
+                "line": 1,
+                "cyclomaticDensity": 11.11111111111111
+            },
+            "functions": [
+                {
+                    "name": "parse",
+                    "sloc": {
+                        "logical": 8,
+                        "physical": 12
+                    },
+                    "cyclomatic": 4,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 12,
+                            "total": 21,
+                            "identifiers": [
+                                "const",
+                                "=",
+                                ".",
+                                "if",
+                                "else",
+                                "===",
+                                "typeof (prefix)",
+                                "! (prefix)",
+                                "()",
+                                "throw",
+                                "new",
+                                "!=="
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 10,
+                            "total": 18,
+                            "identifiers": [
+                                "argv",
+                                "name",
+                                "value",
+                                "\"string\"",
+                                {},
+                                "test",
+                                "Error",
+                                "JSON",
+                                "parse",
+                                null
+                            ]
+                        },
+                        "length": 39,
+                        "vocabulary": 22,
+                        "difficulty": 10.8,
+                        "volume": 173.9178331268546,
+                        "effort": 1878.3125977700297,
+                        "bugs": 0.05797261104228486,
+                        "time": 104.35069987611276
+                    },
+                    "params": 2,
+                    "line": 34,
+                    "cyclomaticDensity": 50
+                },
+                {
+                    "name": "<anonymous>",
+                    "sloc": {
+                        "logical": 4,
+                        "physical": 6
+                    },
+                    "cyclomatic": 1,
+                    "halstead": {
+                        "operators": {
+                            "distinct": 2,
+                            "total": 4,
+                            "identifiers": [
+                                "()",
+                                "return"
+                            ]
+                        },
+                        "operands": {
+                            "distinct": 7,
+                            "total": 12,
+                            "identifiers": [
+                                "argv",
+                                "options",
+                                "\"cyclomatic\"",
+                                "parse",
+                                "\"halsteadDifficulty\"",
+                                "\"maintainability\"",
+                                true
+                            ]
+                        },
+                        "length": 16,
+                        "vocabulary": 9,
+                        "difficulty": 1.7142857142857142,
+                        "volume": 50.718800023077,
+                        "effort": 86.94651432527486,
+                        "bugs": 0.016906266674359,
+                        "time": 4.830361906959714
+                    },
+                    "params": 2,
+                    "line": 56,
+                    "cyclomaticDensity": 25
+                }
+            ],
+            "dependencies": [
+                {
+                    "line": 3,
+                    "path": "fs",
+                    "type": "CommonJS"
+                },
+                {
+                    "line": 4,
+                    "path": "yargs",
+                    "type": "CommonJS"
+                }
+            ],
+            "maintainability": 118.19815561057976,
+            "loc": 6,
+            "cyclomatic": 2.5,
+            "effort": 982.6295560476523,
+            "params": 2,
+            "path": "/Users/pigulla/workspaces/cr2checkstyle/src/yargs.js"
+        }
+    ],
+    "adjacencyMatrix": [
+        [
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0
+        ]
+    ],
+    "firstOrderDensity": 0,
+    "visibilityMatrix": [
+        [
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0
+        ]
+    ],
+    "changeCost": 33.33333333333333,
+    "coreSize": 0,
+    "loc": 4.428571428571428,
+    "cyclomatic": 1.9285714285714286,
+    "effort": 883.822024671946,
+    "params": 1.2857142857142858,
+    "maintainability": 133.96498759141278
+}

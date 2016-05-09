@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<checkstyle>
+  <file name="/Users/pigulla/workspaces/cr2checkstyle/src/cr2checkstyle.js">
+    <error line="0" severity="error" message="Cyclomatic complexity of 10.0 is too high for a module"/>
+    <error line="0" severity="error" message="Halstead difficulty of 22.1 is too high for a module"/>
+    <error line="24" severity="warning" message="Cyclomatic complexity of 6.0 is high for a function"/>
+    <error line="24" severity="error" message="Halstead difficulty of 11.6 is too high for a function"/>
+    <error line="43" severity="error" message="Halstead difficulty of 10.0 is too high for a function"/>
+    <error line="55" severity="error" message="Halstead difficulty of 11.1 is too high for a function"/>
+  </file>
+  <file name="/Users/pigulla/workspaces/cr2checkstyle/src/yargs.js">
+    <error line="0" severity="error" message="Cyclomatic complexity of 4.0 is too high for a module"/>
+    <error line="0" severity="error" message="Halstead difficulty of 16.0 is too high for a module"/>
+    <error line="34" severity="warning" message="Cyclomatic complexity of 4.0 is high for a function"/>
+    <error line="34" severity="error" message="Halstead difficulty of 10.8 is too high for a function"/>
+  </file>
+</checkstyle>

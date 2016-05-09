@@ -1,26 +1,41 @@
 'use strict';
 
+const fs = require('fs');
 const yargs = require('yargs');
 
 const OPTIONS = {
-    'maintainability': {
+    'module-maintainability': {
         type: 'string',
         requiresArg: true,
         describe: 'Thresholds for the per-module maintainability index',
         default: null,
         defaultDescription: 'disabled'
     },
-    'cyclomatic': {
+    'function-cyclomatic-complexity': {
         type: 'string',
         requiresArg: true,
         describe: 'Thresholds for the per-function cyclomatic complexity',
         default: null,
         defaultDescription: 'disabled'
     },
-    'halsteadDifficulty': {
+    'module-cyclomatic-complexity': {
+        type: 'string',
+        requiresArg: true,
+        describe: 'Thresholds for the per-module cyclomatic complexity',
+        default: null,
+        defaultDescription: 'disabled'
+    },
+    'function-halstead-difficulty': {
         type: 'string',
         requiresArg: true,
         describe: 'Thresholds for the per-function Halstead difficulty',
+        default: null,
+        defaultDescription: 'disabled'
+    },
+    'module-halstead-difficulty': {
+        type: 'string',
+        requiresArg: true,
+        describe: 'Thresholds for the per-module Halstead difficulty',
         default: null,
         defaultDescription: 'disabled'
     }
@@ -33,11 +48,14 @@ const OPTIONS = {
 function parse(argv, name) {
     const value = argv[name];
 
-    if (typeof value === 'string' && !/^(\d+),(\d+)$/.test(value)) {
-        throw new Error(`Invalid value for options "${name}"`);
+    if (typeof value === 'string') {
+        if (!/^(\d+),(\d+)$/.test(value)) {
+            throw new Error(`Invalid value for option "${name}"`);
+        }
+        argv[name] = JSON.parse(`[${value}]`);
+    } else if (value !== null) {
+        throw new Error(`Invalid value for option "${name}"`);
     }
-
-    argv[name] = value === null ? null : JSON.parse(`[${value}]`);
 }
 
 /* eslint-disable max-len */
@@ -50,9 +68,11 @@ module.exports = yargs
     .pkgConf('cr2checkstyle', process.cwd())
     .config('config', path => JSON.parse(fs.readFileSync(path)))
     .check(function (argv, options) {
-        parse(argv, 'cyclomatic');
-        parse(argv, 'halsteadDifficulty');
-        parse(argv, 'maintainability');
+        parse(argv, 'module-maintainability');
+        parse(argv, 'module-cyclomatic-complexity');
+        parse(argv, 'function-cyclomatic-complexity');
+        parse(argv, 'module-halstead-difficulty');
+        parse(argv, 'function-halstead-difficulty');
         return true;
     })
     .strict();
