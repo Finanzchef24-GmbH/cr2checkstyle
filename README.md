@@ -24,7 +24,13 @@ $ cr --format json . | cr2checkstyle > report.xml
 ```
 
 ## Configuration
-By default, cr2checkstyle has no thresholds set so it will not generate any warnings or errors. Currently supported metrics are [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity), [halstead difficulty](https://en.wikipedia.org/wiki/Halstead_complexity_measures) and the maintainability index.
+By default, cr2checkstyle has no thresholds set so it will not generate any warnings or errors. Currently supported metrics are [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity), [halstead difficulty](https://en.wikipedia.org/wiki/Halstead_complexity_measures) and the maintainability index. The corresponding command line options are:
+
+ - `module-maintainability`
+ - `module-cyclomatic-complexity`
+ - `function-cyclomatic-complexity`
+ - `module-halstead-difficulty`
+ - `function-halstead-difficulty`
 
 Thresholds are given as a low and high watermark. Values above the high watermark will cause errors, values between the low and high watermark will cause warnings (likewise for higher-is-better metrics such as the maintainability index):
 

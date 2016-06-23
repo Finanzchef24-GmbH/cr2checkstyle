@@ -14,34 +14,26 @@ const output = {
             path: '/home/user/project/some-file.js',
             aggregate: {
                 cyclomatic: 10,
-                halstead: {
-                    difficulty: 22.057142857142857
-                },
+                halstead: { difficulty: 22.057142857142857 },
                 line: 1
             },
             functions: [
                 {
                     name: 'foo',
                     cyclomatic: 6,
-                    halstead: {
-                        difficulty: 14.555555555555555
-                    },
+                    halstead: { difficulty: 14.555555555555555 },
                     line: 24
                 },
                 {
                     name: 'doStuff',
                     cyclomatic: 3,
-                    halstead: {
-                        difficulty: 10
-                    },
+                    halstead: { difficulty: 10 },
                     line: 43
                 },
                 {
                     name: '<anonymous>',
                     cyclomatic: 3,
-                    halstead: {
-                        difficulty: 11.11111111111111
-                    },
+                    halstead: { difficulty: 11.11111111111111 },
                     line: 55
                 }
             ]
@@ -106,6 +98,7 @@ describe('unit', function () {
                 return run({ maintainability: [120, 150] })
                     .then(function (xml) {
                         const errors = xml.find('/checkstyle/file/error');
+
                         expect(errors).to.have.length(1);
 
                         expect(errors[0].attr('severity').value()).to.equal('error');

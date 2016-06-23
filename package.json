@@ -1,8 +1,16 @@
 {
   "name": "cr2checkstyle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Convert complexity-report data to Checkstyle XML",
   "main": "index.js",
+  "homepage": "https://github.com/Finanzchef24-GmbH/cr2checkstyle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Finanzchef24-GmbH/cr2checkstyle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Finanzchef24-GmbH/cr2checkstyle/issues"
+  },
   "bin": {
     "cr2checkstyle": "./index.js"
   },
@@ -10,10 +18,11 @@
     "node": "4"
   },
   "scripts": {
-    "test": "npm run lint && npm run mocha && npm run test-end2end",
+    "test": "npm run lint && npm run mocha && npm run test-end2end && npm run nsp",
     "lint": "eslint .",
     "mocha": "mocha test/\\*\\*/\\*.spec.js",
-    "test-end2end": "node index.js --module-maintainability 80,100 --module-halstead-difficulty 2,4 --module-cyclomatic-complexity 2,4 --function-halstead-difficulty 5,10 --function-cyclomatic-complexity 4,8 < test/integration/report.json | sdiff --text test/integration/output.xml -"
+    "test-end2end": "node index.js --module-maintainability 80,100 --module-halstead-difficulty 2,4 --module-cyclomatic-complexity 2,4 --function-halstead-difficulty 5,10 --function-cyclomatic-complexity 4,8 < test/integration/report.json | sdiff --suppress-common-lines --text test/integration/output.xml -",
+    "nsp": "nsp check"
   },
   "author": {
     "name": "Raphael Pigulla",
@@ -21,18 +30,20 @@
   },
   "license": "ISC",
   "dependencies": {
-    "JSONStream": "1.1.1",
-    "event-stream": "3.3.2",
+    "JSONStream": "1.1.2",
+    "event-stream": "3.3.3",
     "xml-escape": "1.1.0",
-    "yargs": "4.7.0"
+    "yargs": "4.7.1"
   },
   "devDependencies": {
-    "bluebird": "3.3.5",
+    "bluebird": "3.4.1",
     "chai": "3.5.0",
     "complexity-report": "2.0.0-alpha",
-    "eslint": "2.9.0",
-    "libxmljs": "0.17.1",
-    "mocha": "2.4.5",
+    "eslint": "2.13.1",
+    "eslint-config-four66": "1.0.0",
+    "libxmljs": "0.18.0",
+    "mocha": "2.5.3",
+    "nsp": "2.4.0",
     "stream-buffers": "3.0.0"
   }
 }

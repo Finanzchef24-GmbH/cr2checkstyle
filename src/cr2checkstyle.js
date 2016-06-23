@@ -52,6 +52,7 @@ function getMessagesForModule(report, moduleThresholds) {
     if (levels.maintainability !== LEVEL.OK) {
         const value = report.maintainability.toFixed(1);
         const qualifier = levels.maintainability === LEVEL.ERROR ? 'too low' : 'low';
+
         messages.push({
             line: 0,
             severity: levels.maintainability,
@@ -61,6 +62,7 @@ function getMessagesForModule(report, moduleThresholds) {
     if (levels.cyclomatic !== LEVEL.OK) {
         const value = report.aggregate.cyclomatic.toFixed(1);
         const qualifier = levels.cyclomatic === LEVEL.ERROR ? 'too high' : 'high';
+
         messages.push({
             line: 0,
             severity: levels.cyclomatic,
@@ -70,6 +72,7 @@ function getMessagesForModule(report, moduleThresholds) {
     if (levels.halsteadDifficulty !== LEVEL.OK) {
         const value = report.aggregate.halstead.difficulty.toFixed(1);
         const qualifier = levels.halsteadDifficulty === LEVEL.ERROR ? 'too high' : 'high';
+
         messages.push({
             line: 0,
             severity: levels.halsteadDifficulty,
@@ -96,6 +99,7 @@ function getMessagesForFunction(fnReport, functionThresholds) {
     if (levels.cyclomatic !== LEVEL.OK) {
         const value = fnReport.cyclomatic.toFixed(1);
         const qualifier = levels.cyclomatic === LEVEL.ERROR ? 'too high' : 'high';
+
         messages.push({
             line: fnReport.line,
             severity: levels.cyclomatic,
@@ -105,6 +109,7 @@ function getMessagesForFunction(fnReport, functionThresholds) {
     if (levels.halsteadDifficulty !== LEVEL.OK) {
         const value = fnReport.halstead.difficulty.toFixed(1);
         const qualifier = levels.halsteadDifficulty === LEVEL.ERROR ? 'too high' : 'high';
+
         messages.push({
             line: fnReport.line,
             severity: levels.halsteadDifficulty,
@@ -125,11 +130,15 @@ function getMessages(report, thresholds) {
 
     report.functions.forEach(function (fnReport) {
         const fnMessages = getMessagesForFunction(fnReport, thresholds.function || {});
+
         Array.prototype.push.apply(messages, fnMessages);
     });
 
     // Returning undefined makes es.map() drop the object, which is exactly what we want if there are no messages.
-    return messages.length ? { file: report.path, messages } : undefined;
+    return messages.length ? {
+        file: report.path,
+        messages
+    } : undefined;
 }
 
 /**
@@ -138,7 +147,7 @@ function getMessages(report, thresholds) {
  */
 function makeErrorElement(message) {
     const attributes = Object.keys(message).reduce(function (items, name) {
-        return items.concat(`${name}="${escape(message[name] + '')}"`);
+        return items.concat(`${name}="${escape(String(message[name]))}"`);
     }, []);
 
     return `    <error ${attributes.join(' ')}/>`;
@@ -161,9 +170,9 @@ module.exports = function (stdin, stdout, thresholds) {
             return [
                 `  <file name="${escape(result.file)}">`,
                 result.messages.map(makeErrorElement).join(EOL),
-                `  </file>`
+                '  </file>'
             ].join(EOL);
         }))
         .pipe(es.join(EOL))
-        .pipe(stdout);    
+        .pipe(stdout);
 };
