@@ -15,7 +15,7 @@
     "cr2checkstyle": "./index.js"
   },
   "engines": {
-    "node": "4"
+    "node": ">=4"
   },
   "scripts": {
     "test": "npm run lint && npm run mocha && npm run test-end2end && npm run nsp",
