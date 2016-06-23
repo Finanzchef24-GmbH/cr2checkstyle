@@ -4,6 +4,12 @@
   "description": "Convert complexity-report data to Checkstyle XML",
   "main": "index.js",
   "homepage": "https://github.com/Finanzchef24-GmbH/cr2checkstyle",
+  "keywords": [
+    "complexity-report",
+    "complexity",
+    "checkstyle",
+    "xml"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Finanzchef24-GmbH/cr2checkstyle.git"
