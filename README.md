@@ -1,6 +1,6 @@
 # cr2checkstyle
 [![npm](https://img.shields.io/npm/v/cr2checkstyle.svg?style=flat-square)](https://www.npmjs.com/package/cr2checkstyle)
-![Codeship](https://img.shields.io/codeship/227f5300-f7f2-0133-0bf6-2eb9f408a9c3.svg?style=flat-square)
+[![Travis CI](https://img.shields.io/travis/Finanzchef24-GmbH/cr2checkstyle/master.svg?maxAge=2592000&style=flat-square)](https://travis-ci.org/Finanzchef24-GmbH/cr2checkstyle)
 [![Dependency Status](https://img.shields.io/david/Finanzchef24-GmbH/cr2checkstyle.svg?style=flat-square)](https://david-dm.org/Finanzchef24-GmbH/cr2checkstyle)
 [![devDependency Status](https://img.shields.io/david/dev/Finanzchef24-GmbH/cr2checkstyle.svg?style=flat-square)](https://david-dm.org/Finanzchef24-GmbH/cr2checkstyle)
 ![node](https://img.shields.io/node/v/cr2checkstyle.svg?style=flat-square)

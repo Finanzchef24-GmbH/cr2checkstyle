@@ -49,7 +49,7 @@
     "eslint-config-four66": "1.0.0",
     "libxmljs": "0.18.0",
     "mocha": "2.5.3",
-    "nsp": "2.4.0",
+    "nsp": "2.5.0",
     "stream-buffers": "3.0.0"
   }
 }
