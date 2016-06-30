@@ -1,6 +1,6 @@
 {
   "name": "cr2checkstyle",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Convert complexity-report data to Checkstyle XML",
   "main": "index.js",
   "homepage": "https://github.com/Finanzchef24-GmbH/cr2checkstyle",
@@ -36,7 +36,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "JSONStream": "1.1.2",
+    "JSONStream": "1.1.3",
     "event-stream": "3.3.3",
     "xml-escape": "1.1.0",
     "yargs": "4.7.1"
@@ -46,7 +46,7 @@
     "chai": "3.5.0",
     "complexity-report": "2.0.0-alpha",
     "eslint": "2.13.1",
-    "eslint-config-four66": "1.0.0",
+    "eslint-config-four66": "1.0.1",
     "libxmljs": "0.18.0",
     "mocha": "2.5.3",
     "nsp": "2.5.0",

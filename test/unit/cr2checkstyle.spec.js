@@ -43,14 +43,20 @@ const output = {
 
 describe('unit', function () {
     describe('cr2checkstyle', function () {
-        function run(moduleThresholds, fnThresholds) {
+        function run(moduleThresholds, fnThresholds, options) {
             const stdin = new streamBuffers.ReadableStreamBuffer();
             const stdout = new streamBuffers.WritableStreamBuffer();
+            let errorCount;
 
-            cr2cs(stdin, stdout, {
-                module: moduleThresholds || {},
-                function: fnThresholds || {}
-            });
+            cr2cs(
+                stdin,
+                stdout,
+                {
+                    module: moduleThresholds || {},
+                    function: fnThresholds || {}
+                },
+                count => (errorCount = count)
+            );
 
             stdin.put(JSON.stringify(output));
             stdin.stop();
@@ -58,12 +64,13 @@ describe('unit', function () {
             return new Promise(function (resolve, reject) {
                 stdout.on('error', reject);
                 stdout.on('finish', () => resolve(stdout.getContentsAsString()));
-            }).then(contents => libxmljs.parseXmlString(contents));
+            }).then(contents => [libxmljs.parseXmlString(contents), errorCount]);
         }
 
         it('without thresholds', function () {
             return run({})
-                .then(function (xml) {
+                .spread(function (xml, errorCount) {
+                    expect(errorCount).to.equal(0);
                     expect(xml.find('/checkstyle/file')).to.have.length(0);
                 });
         });
@@ -71,7 +78,8 @@ describe('unit', function () {
         describe('with maintainability threshold', function () {
             it('which is met', function () {
                 return run({ maintainability: [80, 110] })
-                    .then(function (xml) {
+                    .spread(function (xml, errorCount) {
+                        expect(errorCount).to.equal(0);
                         expect(xml.find('/checkstyle/file')).to.have.length(0);
                         expect(xml.find('/checkstyle/file/error')).to.have.length(0);
                     });
@@ -79,31 +87,33 @@ describe('unit', function () {
 
             it('which is not met and produces a warning', function () {
                 return run({ maintainability: [80, 120] })
-                    .then(function (xml) {
+                    .spread(function (xml, errorCount) {
                         const files = xml.find('/checkstyle/file');
-                        const errors = xml.find('/checkstyle/file/error');
+                        const errorsAndWarnings = xml.find('/checkstyle/file/error');
 
-                        expect(errors).to.have.length(1);
+                        expect(errorCount).to.equal(0);
+                        expect(errorsAndWarnings).to.have.length(1);
                         expect(files).to.have.length(1);
 
                         expect(files[0].attr('name').value()).to.equal('/home/user/project/some-file.js');
-                        expect(errors[0].attr('severity').value()).to.equal('warning');
-                        expect(errors[0].attr('line').value()).to.equal('0');
-                        expect(errors[0].attr('message').value())
+                        expect(errorsAndWarnings[0].attr('severity').value()).to.equal('warning');
+                        expect(errorsAndWarnings[0].attr('line').value()).to.equal('0');
+                        expect(errorsAndWarnings[0].attr('message').value())
                             .to.equal('Maintainability of 115.7 is low for a module');
                     });
             });
 
             it('which is not met and produces an error', function () {
                 return run({ maintainability: [120, 150] })
-                    .then(function (xml) {
-                        const errors = xml.find('/checkstyle/file/error');
+                    .spread(function (xml, errorCount) {
+                        const errorsAndWarnings = xml.find('/checkstyle/file/error');
 
-                        expect(errors).to.have.length(1);
+                        expect(errorCount).to.equal(1);
+                        expect(errorsAndWarnings).to.have.length(1);
 
-                        expect(errors[0].attr('severity').value()).to.equal('error');
-                        expect(errors[0].attr('line').value()).to.equal('0');
-                        expect(errors[0].attr('message').value())
+                        expect(errorsAndWarnings[0].attr('severity').value()).to.equal('error');
+                        expect(errorsAndWarnings[0].attr('line').value()).to.equal('0');
+                        expect(errorsAndWarnings[0].attr('message').value())
                             .to.equal('Maintainability of 115.7 is too low for a module');
                     });
             });
@@ -112,7 +122,7 @@ describe('unit', function () {
         describe('with halstead difficulty threshold', function () {
             it('which is met', function () {
                 return run(null, { halsteadDifficulty: [15, 20] })
-                    .then(function (xml) {
+                    .spread(function (xml) {
                         expect(xml.find('/checkstyle/file')).to.have.length(0);
                         expect(xml.find('/checkstyle/file/error')).to.have.length(0);
                     });
@@ -120,8 +130,8 @@ describe('unit', function () {
 
             it('which is partially not met', function () {
                 return run(null, { halsteadDifficulty: [11, 14] })
-                    .then(function (xml) {
-                        const errors = xml.find('/checkstyle/file/error');
+                    .spread(function (xml, errorCount) {
+                        const errorsAndWarnings = xml.find('/checkstyle/file/error');
                         const expected = [
                             {
                                 severity: 'error',
@@ -135,9 +145,10 @@ describe('unit', function () {
                             }
                         ];
 
-                        expect(errors).to.have.length(2);
+                        expect(errorCount).to.equal(1);
+                        expect(errorsAndWarnings).to.have.length(2);
 
-                        errors.forEach(function (error, index) {
+                        errorsAndWarnings.forEach(function (error, index) {
                             expect(error.attr('line').value()).to.equal(expected[index].line);
                             expect(error.attr('severity').value()).to.equal(expected[index].severity);
                             expect(error.attr('message').value()).to.equal(expected[index].message);

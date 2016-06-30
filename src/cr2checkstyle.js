@@ -157,16 +157,24 @@ function makeErrorElement(message) {
  * @param {stream.Readable} stdin
  * @param {stream.Writable} stdout
  * @param {cr2cs.Thresholds} thresholds
+ * @param {function=} callback
  */
-module.exports = function (stdin, stdout, thresholds) {
+module.exports = function (stdin, stdout, thresholds, callback) {
+    let errorCount = 0;
+
     stdout.write(`<?xml version="1.0" encoding="UTF-8" ?>${EOL}`);
     stdout.write(`<checkstyle>${EOL}`);
-    stdin.on('end', () => stdout.write(`${EOL}</checkstyle>`));
+    stdin.on('end', function () {
+        stdout.write(`${EOL}</checkstyle>`);
+        return callback ? callback(errorCount) : undefined;
+    });
 
     stdin
         .pipe(JSONStream.parse(['reports', true]))
         .pipe(es.mapSync(report => getMessages(report, thresholds)))
         .pipe(es.mapSync(function (result) {
+            errorCount += result.messages.filter(message => message.severity === 'error').length;
+
             return [
                 `  <file name="${escape(result.file)}">`,
                 result.messages.map(makeErrorElement).join(EOL),
